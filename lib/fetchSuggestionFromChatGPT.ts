@@ -1,6 +1,6 @@
 const fetchSuggestionFromChatGPT = () =>
   fetch('/api/suggestion', {
-    cache: 'no-cache'
-  }).then((res) => res.json())
+    cache: 'no-store'
+  }).then((res) => res)
 
 export default fetchSuggestionFromChatGPT

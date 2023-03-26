@@ -1,11 +1,13 @@
 export async function GET(request: Request) {
-  // Connect to our Microsoft Azure Function endpoint
-
-  const response = await fetch('...', {
-    cache: 'no-cache' // New suggestions
-  })
-  const textData = await response.text()
-  return new Response(JSON.stringify(textData.trim()), {
-    status: 200
-  })
+  try {
+    const response = await fetch(
+      'http://localhost:7071/api/getChatGPTSuggestion'
+    )
+    const textData = await response.text()
+    return new Response(JSON.stringify(textData), {
+      status: 200
+    })
+  } catch (error) {
+    console.log('EL PUTO ERROR ', error)
+  }
 }
